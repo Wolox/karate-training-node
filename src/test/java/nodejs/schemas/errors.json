@@ -1,0 +1,8 @@
+{
+  "errors": [
+    { "code": "##string", "message": "#notnull" }
+  ],
+  "origin": "##string",
+  "stack_trace": "##string",
+  "timestamp": "#string"
+}

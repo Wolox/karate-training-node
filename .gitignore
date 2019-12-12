@@ -1,0 +1,5 @@
+target
+.idea
+.DS_Store
+/src/test/java/nodejs/flows/env.json
+src/test/java/log4j2.properties

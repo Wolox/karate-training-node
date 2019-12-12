@@ -1,0 +1,17 @@
+{
+  "page": [],
+  "count": "#number",
+  "limit": "#number",
+  "offset": "#number",
+  "total_pages": "#number",
+  "total_count": "#number",
+  "previous_page": "#number",
+  "current_page": "#number",
+  "next_page": "#number",
+  "previous_page_link": "##string",
+  "current_page_link": "##string",
+  "next_page_link": "##string",
+  "first_page_link": "##string",
+  "last_page_link": "##string",
+  "n_page_link": "##string"
+}
