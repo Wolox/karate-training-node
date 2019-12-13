@@ -8,9 +8,8 @@ Feature: Get album photos
     * def responseLogin = callonce read('../login/login-regular.feature');
     * def tokenId = responseLogin.responseHeaders['Authorization'][0];
     * def responseGetAlbums = callonce read('../albums/albums-getAlbums.feature');
-  #  * def randomAlbum = Math.floor(Math.random() * responseGetAlbums.response[0].length ) + 1;
-  #  * def albumId = responseGetAlbums.response[randomAlbum].id;
-    * def albumId = responseGetAlbums.response[responseGetAlbums.response.length - 1].id;
+    * def randomAlbum = Math.floor(Math.random() * responseGetAlbums.response[0].length ) + 1;
+    * def albumId = responseGetAlbums.response[randomAlbum].id;
     * def albumPhotosSchema = read('../schemas/photos.json');
     * set albumPhotosSchema['album_id'] = albumId;
 

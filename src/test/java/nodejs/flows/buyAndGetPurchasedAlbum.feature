@@ -10,19 +10,17 @@ Feature: Get purchased albums
     * def purchasedAlbumSchema = read('../schemas/purchasedAlbum.json');
     * def userId = response.response["user_id"];
     * def responseGetAlbums = callonce read('../albums/albums-getAlbums.feature');
-  #  * def randomAlbum = Math.floor(Math.random() * responseGetAlbums.response[0].length ) + 1;
-  #  * def albumId = responseGetAlbums.response[randomAlbum].id;
     * def albumId = responseGetAlbums.response[0].id;
     * def albumJsonId = { "album_id" : '#(albumId)' }
 
-  Scenario: Buy an album with a regular user
+
+  Scenario: Buy an album with a regular user and Get purchased albums looking for that
     Given path 'albums', albumId
     And header Authorization =  tokenId
     And request { }
     When method POST
     Then status 201
 
-  Scenario: Get purchased albums
     Given path 'users', userId, 'albums'
     And header Authorization =  tokenId
     And request { }
