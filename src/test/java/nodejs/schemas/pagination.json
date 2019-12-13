@@ -5,7 +5,7 @@
   "offset": "#number",
   "total_pages": "#number",
   "total_count": "#number",
-  "previous_page": "#number",
+  "previous_page": "#present",
   "current_page": "#number",
   "next_page": "#number",
   "previous_page_link": "##string",

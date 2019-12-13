@@ -7,11 +7,15 @@ Feature: Get users and validate data returned
     * url url
     * def userSchemaRole = read('../schemas/userStringRole.json');
     * def userSchemaBoolean = read('../schemas/userBooleanRole.json');
+    * def paginationSchemaRole = read('../schemas/pagination.json');
+    * set paginationSchemaRole['page'] = "#[] userSchemaRole";
+    * def paginationSchemaBoolean = read('../schemas/pagination.json');
+    * set paginationSchemaBoolean['page'] = "#[] userSchemaBoolean"
     * def getSchema =
     """
     function (response){
-      if (typeof response.admin !== 'undefined') return userSchemaBoolean
-      else return userSchemaRole;
+      if (typeof response.admin !== 'undefined') return paginationSchemaBoolean
+      else return paginationSchemaRole;
     }
     """
 
@@ -25,7 +29,7 @@ Feature: Get users and validate data returned
     And header Authorization = tokenId
     When method GET
     Then status 200
-    And match each response.result == getSchema(response.result[0])
+    And match response == getSchema(response.page[0])
 
   Scenario: Get users with regular
     * def response = call read('../login/login-regular.feature');
@@ -37,4 +41,4 @@ Feature: Get users and validate data returned
     And header Authorization = tokenId
     When method GET
     Then status 200
-    And match each response.result == getSchema(response.result[0])
+    And match response == getSchema(response.page[0])
