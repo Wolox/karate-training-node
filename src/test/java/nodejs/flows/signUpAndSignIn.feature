@@ -10,7 +10,7 @@ Feature: Sign up and sign in
   Scenario Outline: data validation - case: '<case>'
 
     Given path 'users'
-    And request { email: '<email>' , password: '<password>' , firstName: '<firstName>' , lastName: '<lastName>' }
+    And request { email: '<email>' , password: '<password>' , first_name: '<firstName>' , last_name: '<lastName>' }
     When method POST
     Then status 422
     And match response == responseErrorSchema
