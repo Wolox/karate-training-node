@@ -36,6 +36,14 @@ Feature: Sign up and sign in
     When method POST
     Then status 201
 
+  Scenario: Wolox-CL domain must be admitted
+    * def newUser = { email: 'test-wolox-co@wolox.cl' , password: '12345678Aa' , firstName: 'TestUser' , lastName: 'TestUser' }
+
+    Given path 'users'
+    And request newUser
+    When method POST
+    Then status 201
+
   Scenario: Create user and try to log in
     * def newUser = users['newUser']
 
