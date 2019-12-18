@@ -16,7 +16,7 @@ Feature: Invalidate sessions and try to buy
     * def responseLogin = call read('../login/login-regular.feature');
     * def tokenId2 = responseLogin.responseHeaders['Authorization'][0];
 
-    * match tokenId1 != tokenId2;
+    * assert tokenId1 != tokenId2;
 
     Given path 'users', 'sessions', 'invalidate_all'
     And header Authorization =  tokenId1

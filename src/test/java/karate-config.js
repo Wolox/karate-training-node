@@ -20,16 +20,18 @@ function() {
             "password": karate.properties['adminPass']
           },
           "newUser": {
-            "email": karate.properties['newUserEmail'],
-            "password": karate.properties['newUserPass'],
-            "firstName": karate.properties['newUserFirstName'],
-            "lastName": karate.properties['newUserLastName']
+            "email": karate.properties['newUserEmail'] || 'test@wolox.com.ar',
+            "password": karate.properties['newUserPass'] || '12345678',
+            "firstName": karate.properties['newUserFirstName'] || 'Test',
+            "lastName": karate.properties['newUserLastName'] || 'QA'
           }
         }
        };
   }else{
-    var data = read('classpath:nodejs/flows/env.json');
-    config = data[env];
+    if (env == 'dev'){
+        var data = read('classpath:nodejs/flows/env.json');
+        config = data[env];
+    }
   }
 
   karate.configure('connectTimeout', 5000);
