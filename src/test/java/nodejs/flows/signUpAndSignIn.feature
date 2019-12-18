@@ -28,6 +28,13 @@ Feature: Sign up and sign in
     |other_invalid_email|@wolox.com.ar|12345678|test|test|1
     |multiple_errors|.test+1@sdad.com.ar|1|12313123|1234567|4
 
+  Scenario: Wolox-CO domain must be admitted
+    * def newUser = { email: 'test-wolox-co@wolox.co' , password: '12345678Aa' , firstName: 'TestUser' , lastName: 'TestUser' }
+
+    Given path 'users'
+    And request newUser
+    When method POST
+    Then status 201
 
   Scenario: Create user and try to log in
     * def newUser = users['newUser']
