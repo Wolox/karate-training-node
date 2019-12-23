@@ -22,7 +22,7 @@ Feature: Invalidate sessions and try to buy
     And header Authorization =  tokenId1
     And request { }
     When method POST
-    Then status 204
+    Then status 200
 
     Given path 'albums', 1
     And header Authorization =  tokenId1

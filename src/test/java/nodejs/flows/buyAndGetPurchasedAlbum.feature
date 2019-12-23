@@ -11,7 +11,7 @@ Feature: Get purchased albums
     * def userId = response.response["user_id"];
     * def responseGetAlbums = callonce read('../albums/albums-getAlbums.feature');
     * def albumId = responseGetAlbums.response[0].id;
-    * def albumJsonId = { "album_id" : '#(albumId)' }
+    * def albumJsonId = { "album" : { "user_id": "#number", "id": '#(albumId)', "title": "#string" } };
 
 
   Scenario: Buy an album with a regular user and Get purchased albums looking for that
