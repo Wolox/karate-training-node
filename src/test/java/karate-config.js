@@ -21,7 +21,7 @@ function() {
           },
           "newUser": {
             "email": karate.properties['newUserEmail'] || 'test@wolox.com.ar',
-            "password": karate.properties['newUserPass'] || '12345678',
+            "password": karate.properties['newUserPass'] || '12345678Aa',
             "firstName": karate.properties['newUserFirstName'] || 'Test',
             "lastName": karate.properties['newUserLastName'] || 'QA'
           }

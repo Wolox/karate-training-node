@@ -28,21 +28,35 @@ Feature: Sign up and sign in
     |other_invalid_email|@wolox.com.ar|12345678|test|test|1
     |multiple_errors|.test+1@sdad.com.ar|1|12313123|1234567|4
 
-  Scenario: Wolox-CO domain must be admitted
-    * def newUser = { email: 'test-wolox-co@wolox.co' , password: '12345678Aa' , firstName: 'TestUser' , lastName: 'TestUser' }
+  Scenario: Wolox-CO domain must be admitted and login
+    * def newUser = { email: 'test-wolox-co+1@wolox.co' , password: '12345678Aa' , firstName: 'TestUser' , lastName: 'TestUser' }
 
     Given path 'users'
     And request newUser
     When method POST
     Then status 201
 
-  Scenario: Wolox-CL domain must be admitted
-    * def newUser = { email: 'test-wolox-co@wolox.cl' , password: '12345678Aa' , firstName: 'TestUser' , lastName: 'TestUser' }
+    Given path 'users', 'sessions'
+    And request newUser
+    When method POST
+    Then status 200
+    And match responseHeaders contains { Authorization: '#notnull' }
+    And match response contains { user_id: '#notnull' }
+
+  Scenario: Wolox-CL domain must be admitted and login
+    * def newUser = { email: 'test-wolox-cl+1@wolox.cl' , password: '12345678Aa' , firstName: 'TestUser' , lastName: 'TestUser' }
 
     Given path 'users'
     And request newUser
     When method POST
     Then status 201
+
+    Given path 'users', 'sessions'
+    And request newUser
+    When method POST
+    Then status 200
+    And match responseHeaders contains { Authorization: '#notnull' }
+    And match response contains { user_id: '#notnull' }
 
   Scenario: Create user and try to log in
     * def newUser = users['newUser']
